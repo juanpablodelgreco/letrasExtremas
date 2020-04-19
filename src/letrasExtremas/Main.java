@@ -17,8 +17,8 @@ public class Main {
 		vcMax = valorMaximoCantmax(letrasExtremasTotales);
 		String[] arrayLetrasExtremasMaximas = new String[vcMax[1]];
 		letrasExtremas(letrasExtremasTotales, arrayLetrasExtremasMaximas, vcMax[0]);
-		ordenarArray(palabras.palabras);
-		LeerEscribir.Escribir(outputPath, arrayLetrasExtremasMaximas, palabras.palabras);
+		ordenarArray(palabras.getPalabras());
+		LeerEscribir.Escribir(outputPath, arrayLetrasExtremasMaximas, palabras.getPalabras());
 
 	}
 
@@ -39,8 +39,8 @@ public class Main {
 	private static void obtenerLetrasExtremas(Letra palabras, HashMap<String, Integer> letras) {
 		int longitud;
 		String l, li, lf;
-		for (int i = 0; i < palabras.cantPalabras; i++) {
-			l = palabras.palabras[i];
+		for (int i = 0; i < palabras.getCantPalabras(); i++) {
+			l = palabras.getPalabras()[i];
 			longitud = l.length();
 			li = String.valueOf(l.charAt(0));
 			lf = String.valueOf(l.charAt(longitud - 1));
