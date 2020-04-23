@@ -6,9 +6,16 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class LeerEscribir {
+	private String inputPath;
+	private String outputPath;
 
-	public static void Leer(String path, Letra palabras) throws FileNotFoundException {
-		Scanner sc = new Scanner(new File(path));
+	public LeerEscribir(String inputPath, String outputPath) {
+		this.inputPath = inputPath;
+		this.outputPath = outputPath;
+	}
+
+	public void leer(Letra palabras) throws FileNotFoundException {
+		Scanner sc = new Scanner(new File(inputPath));
 		palabras.setCantPalabras(sc.nextInt());
 		palabras.setPalabras(new String[palabras.getCantPalabras()]);
 		for (int i = 0; i < palabras.getCantPalabras(); i++) {
@@ -17,9 +24,9 @@ public class LeerEscribir {
 		sc.close();
 	}
 
-	public static void Escribir(String path, String[] vecLetras, String[] vecPalabras) throws FileNotFoundException {
+	public void Escribir(String[] vecLetras, String[] vecPalabras) throws FileNotFoundException {
 		int i, j, k;
-		PrintWriter pw = new PrintWriter(new File(path));
+		PrintWriter pw = new PrintWriter(new File(outputPath));
 		for (k = 0; k < vecLetras.length; k++) {
 			pw.println(vecLetras[k]);
 		}
@@ -40,10 +47,10 @@ public class LeerEscribir {
 				pw.println(vecPalabras[i]);
 		}
 		pw.close();
-		System.out.println(path + " generado con exito!");
+		System.out.println(outputPath + " generado con exito!");
 	}
 
-	public static boolean tieneLetra(String letra, String palabra) {
+	public boolean tieneLetra(String letra, String palabra) {
 		if (letra.contentEquals(String.valueOf(palabra.charAt(0))))
 			return true;
 		if (letra.contentEquals(String.valueOf(palabra.charAt(palabra.length() - 1))))
